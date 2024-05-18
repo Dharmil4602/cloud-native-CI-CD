@@ -1,0 +1,32 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  script: |
+    docker build -t northamerica-northeast1-docker.pkg.dev/$PROJECT_ID/cloud-assignment/processor:latest .
+
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+    - 'container'
+    - 'clusters'
+    - 'get-credentials'
+    - 'kubernetes-assignment'
+    - '--zone=us-central1-c'
+    - '--project=$PROJECT_ID'
+      
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['delete', '-f', 'container-1-deployment.yaml']
+  env:
+      - 'CLOUDSDK_COMPUTE_REGION=us-central1-c'
+      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=kubernetes-assignment'
+      - 'PROJECT_ID=$PROJECT_ID'
+  
+- name: 'gcr.io/cloud-builders/kubectl'
+  args: ['apply', '-f', 'container-1-deployment.yaml']
+  env:
+      - 'CLOUDSDK_COMPUTE_REGION=us-central1-c'
+      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=kubernetes-assignment'
+      - 'PROJECT_ID=$PROJECT_ID'
+
+images:
+- 'northamerica-northeast1-docker.pkg.dev/$PROJECT_ID/cloud-assignment/processor:latest'

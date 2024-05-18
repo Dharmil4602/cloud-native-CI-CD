@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8-container2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8-container2
+  template:
+    metadata:
+      labels:
+        app: k8-container2
+    spec:
+      containers:
+      - name: k8-container2
+        image: dharmilshah/k8-container2:latest
+        ports:
+        - containerPort: 3000
+        volumeMounts:
+          - name: data-volume
+            mountPath: /dharmil_PV_dir
+      volumes:
+        - name: data-volume
+          persistentVolumeClaim:
+            claimName: dharmil-pvc

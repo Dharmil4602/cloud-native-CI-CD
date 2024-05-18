@@ -1,0 +1,21 @@
+services:
+  container1:
+    image: k8-container1
+    build: 
+      context: ./container-1
+      dockerfile: Dockerfile
+    ports:
+      - "6000:6000"
+    volumes:
+      - ".:/data"
+
+
+  container2:
+    image: k8-container2
+    build: 
+      context: ./container-2
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ".:/data"
