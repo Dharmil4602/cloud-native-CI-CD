@@ -72,8 +72,4 @@ Follow these steps to set up and deploy the project:
 5. **Trigger the CI/CD Pipeline**:
     - Set up Cloud Build triggers in GCP to automate the build and deployment process whenever changes are pushed to the Cloud Source Repository.
 
-## Contributing
-
-Contributions are welcome! Please fork the repository and create a pull request with your changes. Make sure to follow the project's coding standards and include appropriate tests.
-
 ---
