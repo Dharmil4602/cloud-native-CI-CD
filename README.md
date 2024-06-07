@@ -72,10 +72,6 @@ Follow these steps to set up and deploy the project:
 5. **Trigger the CI/CD Pipeline**:
     - Set up Cloud Build triggers in GCP to automate the build and deployment process whenever changes are pushed to the Cloud Source Repository.
 
-## Usage
-
-Once the setup and deployment are complete, you can interact with the microservices through their exposed REST APIs. Detailed API documentation can be found in the `api-docs` directory.
-
 ## Contributing
 
 Contributions are welcome! Please fork the repository and create a pull request with your changes. Make sure to follow the project's coding standards and include appropriate tests.
